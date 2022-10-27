@@ -27,7 +27,7 @@ const Services = () => {
     return (
         <div className='Services'>
             <div className="container">
-                <div className="row">
+                <div className="row align-items-center">
                     <div className="col-lg-6">
                         <div className="info">
                             <h2 className='main-title'>Этапы очистки воды</h2>
@@ -54,7 +54,7 @@ const Services = () => {
                                         </div>
                                         Вода в офис
                                     </AccordionHeader>
-                                    <AccordionBody accordionId="1">
+                                    <AccordionBody accordionId="2">
                                         <p>Доставляем баллоны в коммерческие и государственные организации, бизнес-центры, спортивные, образовательные и другие учреждения. </p>
                                     </AccordionBody>
                                 </AccordionItem>
@@ -66,7 +66,7 @@ const Services = () => {
                                         </div>
                                         Кулеры и помпы
                                     </AccordionHeader>
-                                    <AccordionBody accordionId="1">
+                                    <AccordionBody accordionId="3">
                                         <p>Осуществляем продажу разных видов аппаратов для розлива воды: помп, напольных и настольных кулеров, а также предлагаем их в аренду. </p>
                                     </AccordionBody>
                                 </AccordionItem>
