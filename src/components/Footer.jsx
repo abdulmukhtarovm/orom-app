@@ -3,6 +3,7 @@ import { faFacebookF, faInstagram, faTelegramPlane } from '@fortawesome/free-bra
 import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -34,7 +35,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-3 offset-lg-1">
+                    <div className="col-lg-3 d-lg-block d-none offset-lg-1">
                         <div className="wrap">
                             <h4>Контакты</h4>
                             <div className="d-flex mb-3">
@@ -52,18 +53,18 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-2 offset-lg-1">
+                    
+                    <div className="col-lg-2 d-lg-block d-none offset-lg-1">
                         <div className="wrap">
                             <h4>Страницы</h4>
                             <ul className='links-menu'>
-                                <li><a href="/about">О компании</a></li>
-                                <li><a href="/questions">Новости</a></li>
-                                <li><a href="/contacts">Клиенты</a></li>
-                                <li><a href="/contacts">Контакт</a></li>
+                                <li><Link to="/about">О компании</Link></li>
+                                <li><Link to="/catalog">Каталог</Link></li>
+                                <li><Link to="/contacts">Контакт</Link></li>
                             </ul>
                         </div>
                     </div>
-                    <div className="col-lg-2 offset-lg-1">
+                    <div className="col-lg-2 d-lg-block d-none offset-lg-1">
                         <div className="wrap">
                             <h4>Вакансии</h4>
                             <ul className='links-menu'>

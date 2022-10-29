@@ -53,7 +53,7 @@ const Catalog = () => {
                             <TabContent activeTab={activeTab}>
                                 <TabPane tabId="1">
                                 <div className="row">
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -61,9 +61,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <h6>99,000 сум</h6>
                                                     </div>
@@ -75,7 +76,7 @@ const Catalog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -83,9 +84,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -100,7 +102,7 @@ const Catalog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -108,9 +110,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -125,7 +128,7 @@ const Catalog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -133,9 +136,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -150,7 +154,7 @@ const Catalog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -158,9 +162,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -175,7 +180,7 @@ const Catalog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -183,9 +188,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -204,7 +210,7 @@ const Catalog = () => {
                                 </TabPane>
                                 <TabPane tabId="2">
                                 <div className="row">
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -212,9 +218,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -233,7 +240,7 @@ const Catalog = () => {
                                 </TabPane>
                                 <TabPane tabId="3">
                                 <div className="row">
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -241,9 +248,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -262,7 +270,7 @@ const Catalog = () => {
                                 </TabPane>
                                 <TabPane tabId="4">
                                 <div className="row">
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -270,9 +278,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -287,7 +296,7 @@ const Catalog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-4 mb-lg-5 mb-3">
+                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="img">
@@ -295,9 +304,10 @@ const Catalog = () => {
                                                 </div>
                                                 <div className="info">
                                                     <h4>White mount 19L</h4>
-                                                    <p>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
+                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
 
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className="d-lg-flex justify-content-between">
                                                         <h5>Есть в наличии</h5>
                                                         <div>
                                                         <h6 className='oldPrice'>450,000 сум</h6>
@@ -316,6 +326,7 @@ const Catalog = () => {
                                 </TabPane>
 
                             </TabContent>
+
                             <div className="mybtn text-end">
                                 <a href="/">Ещё <FontAwesomeIcon icon={faChevronRight}/></a>
                             </div>

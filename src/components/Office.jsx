@@ -6,7 +6,7 @@ const Office = () => {
     return (
         <div className='Office'>
             <div className="container">
-                <img className='w-100' src="img/map.png" alt="" />
+                <img className='w-100 d-lg-block d-none' src="img/map.png" alt="" />
                 <div className="blok">
                     <h4>Главный офис</h4>
                     <div className="d-flex  mb-3">
