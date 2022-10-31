@@ -1,20 +1,55 @@
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { API_PATH } from '../tools/constants'
 
 const Catalog = () => {
-    const [activeTab, setActiveTab] = useState('1');
+    const [activeTab, setActiveTab] = useState('0');
+    const [categories, setCategories] = useState([])
+    const [productId, setProductId] = useState('')
+    const [filterProducts, setFilterProducts] = useState([])
+    const [loader, setLoader] = useState(false)
 
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
+    const getCategories = async () => {
+        await axios.get(API_PATH + '/category/')
+            .then((res) => {
+                setCategories(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const getProductBiId = async () => {
+        setLoader(true)
+        await axios.get(API_PATH + `/products/?category_id=${productId}`)
+            .then((res) => {
+                setFilterProducts(res.data)
+                setLoader(false)
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoader(false)
+            })
+    }
+
+    useEffect(() => {
+        getCategories()
+        getProductBiId()
+    }, [productId])
+
     return (
         <>
             <div className='Catalog'>
-            <div className="text-center mb-3">
+                <div className="text-center mb-3">
                     <h2 className='main-title'>Каталог</h2>
                 </div>
                 <div className="container">
@@ -23,312 +58,64 @@ const Catalog = () => {
                             <Nav tabs className='myNavs'>
                                 <NavItem>
                                     <NavLink
-                                        className={classnames({ active: activeTab === '1' })}
-                                        onClick={() => { toggle('1'); }}>
+                                        className={classnames({ active: activeTab === '0' })}
+                                        onClick={() => { toggle('0'); setProductId('') }}>
                                         Все категории
                                     </NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink
-                                        className={classnames({ active: activeTab === '2' })}
-                                        onClick={() => { toggle('2'); }}>
-                                        Воды
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink
-                                        className={classnames({ active: activeTab === '3' })}
-                                        onClick={() => { toggle('3'); }}>
-                                        Техники
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem className='myItem'>
-                                    <NavLink
-                                        className={classnames({ active: activeTab === '4' })}
-                                        onClick={() => { toggle('4'); }}>
-                                       Прочее
-                                    </NavLink>
-                                </NavItem>
+                                {categories && categories.slice(0,2).map((item, index) => (
+                                    <NavItem key={index + 1}>
+                                        <NavLink
+                                            className={classnames({ active: activeTab === item.id })}
+                                            onClick={() => { toggle(item.id); setProductId(item.id) }}>
+                                            {item.name}
+                                        </NavLink>
+                                    </NavItem>
+                                ))}
                             </Nav>
-                            <TabContent activeTab={activeTab}>
-                                <TabPane tabId="1">
+
+                            <div className="tab-content">
                                 <div className="row">
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (1).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
+                                    {loader ? <>
+                                        <div className="col-lg-4 col-6 mb-lg-5 mb-3 Loader"><div className="cards"></div></div>
+                                    </> :
+                                        filterProducts && filterProducts.slice(0,3).map((item, index) => (
+                                            <div key={index} className="col-lg-4 col-6 mb-lg-5 mb-3">
+                                                <div className="card">
+                                                    <div className="card-content">
+                                                        <div className="img">
+                                                            <img src={item.image} alt={item.name} />
+                                                        </div>
+                                                        <div className="info">
+                                                            <h4>{item.name}</h4>
+                                                            <p className='d-none d-lg-block'>{item.description}</p>
+                                                            <p className='d-block d-lg-none'>{item.description.length > 44 ? item.description.slice(0, 44) : item.description}</p>
 
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <h6>99,000 сум</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (2).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
+                                                            <div className="d-lg-flex justify-content-between">
+                                                                {item.is_exist ?
+                                                                    <h5>   <span><img src="/img/green.svg" alt="orom suvlari" /></span>  Есть в наличии  </h5> :
+                                                                    <h5> <span><img src="/img/red.svg" alt="orom suvlari" /></span>  Нет в наличии </h5>
+                                                                }
+                                                                <div>
+                                                                    <h6 className='oldPrice'>{item.price} сум</h6>
+                                                                    <h6>{item.new_price} сум</h6>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
 
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (3).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
+                                                    <div className="more">
+                                                        <a href="tel: +998988007719">Заказать</a>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (4).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (5).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (6).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        ))}
                                 </div>
-                                </TabPane>
-                                <TabPane tabId="2">
-                                <div className="row">
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (2).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
+                            </div>
 
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </TabPane>
-                                <TabPane tabId="3">
-                                <div className="row">
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (4).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </TabPane>
-                                <TabPane tabId="4">
-                                <div className="row">
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (5).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-6 mb-lg-5 mb-3">
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="img">
-                                                    <img src="img/catalog (6).png" alt="" />
-                                                </div>
-                                                <div className="info">
-                                                    <h4>White mount 19L</h4>
-                                                    <p className='d-none d-lg-block'>Наш интернет-магазин реализует воду самых лучших марок и предлагает интересные новинки.</p>
-                                                    <p className='d-block d-lg-none'>Наш интернет-магазин реализует воду.</p>
-
-                                                    <div className="d-lg-flex justify-content-between">
-                                                        <h5>Есть в наличии</h5>
-                                                        <div>
-                                                        <h6 className='oldPrice'>450,000 сум</h6>
-                                                        <h6>360,000 сум</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="more">
-                                                <a href="/">Заказать</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </TabPane>
-
-                            </TabContent>
 
                             <div className="mybtn text-end">
-                                <a href="/">Ещё <FontAwesomeIcon icon={faChevronRight}/></a>
+                                <Link to="/catalog">Ещё <FontAwesomeIcon icon={faChevronRight} /></Link>
                             </div>
                         </div>
                     </div>

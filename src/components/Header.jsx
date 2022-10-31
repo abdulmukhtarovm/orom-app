@@ -1,6 +1,7 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
+
     return (
         <div className='Header'>
             <div className="container">
@@ -13,20 +14,20 @@ const Header = () => {
                             <h1>Каждая капля сделает вас счастливым</h1>
                             <div className="buttons d-flex d-md-block d-none">
                                 <div className="mybtn order">
-                                    <a href="/">Заказать</a>
+                                    <a href="tel: +998 (98) 800 77 19">Заказать</a>
                                 </div>
                                 <div className="more">
-                                    <a href="/">Подробнее</a>
+                                    <Link to="/about">Подробнее</Link>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="buttons d-flex d-md-none d-block">
                         <div className="mybtn order">
-                            <a href="/">Заказать</a>
+                            <a href="tel: +998 (98) 800 77 19">Заказать</a>
                         </div>
                         <div className="more">
-                            <a href="/">Подробнее</a>
+                            <Link to="/about">Подробнее</Link>
                         </div>
                     </div>
                 </div>

@@ -31,8 +31,37 @@ $colorGrey: #3C3C3C;
 
 
 html {
-
     overflow-x: hidden;
+
+    ::selection {
+        background-color: $colorBlue;
+        color: #fff;
+    }
+
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #e5e5e5;
+
+        &:hover {
+            background: #cccccc;
+        }
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #3c3c3c75;
+        border-radius: 15px;
+        transition: all .3s ease-in;
+
+        &:hover {
+            background: #3c3c3caf;
+        }
+    }
 }
 
 #root {
@@ -44,6 +73,7 @@ body {
     padding: 0 !important;
     font-family: $regular;
     background: #F7FBFE;
+
     .z-1 {
         z-index: 1 !important;
     }
@@ -159,6 +189,13 @@ body {
                     font-size: 18px;
                     color: $colorGrey;
                     font-family: $medium;
+                    border-bottom: 2px solid transparent;
+                    transition: all .3s ease-in-out;
+
+                    &.active {
+                        color: #2C8CC7;
+                        border-color: #2C8CC7;
+                    }
                 }
             }
         }
@@ -190,6 +227,7 @@ body {
 
             .search {
                 margin-right: 24px;
+
                 input {
                     display: none;
                 }
@@ -363,7 +401,8 @@ body {
 
     .Header {
         background: url(../img/header.png) no-repeat;
-        background-size: cover;
+        // background-size: cover;
+        background-size: 100% auto;
         height: 1100px;
         padding-top: 20%;
 
@@ -445,6 +484,21 @@ body {
         }
     }
 
+    .loader {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 99999;
+    }
+
     .Benefits {
         padding: 100px 0;
 
@@ -479,6 +533,7 @@ body {
             @media (max-width:992px) {
                 top: -9%;
             }
+
             @media (max-width:1440px) {
                 top: -25%;
             }
@@ -540,6 +595,7 @@ body {
             @media (max-width:992px) {
                 top: -11%;
             }
+
             @media (max-width:1440px) {
                 top: -21%;
             }
@@ -696,7 +752,7 @@ body {
 
         .nav-link {
             border: none;
-            padding: 0; 
+            padding: 0;
         }
 
         .info {
@@ -866,6 +922,23 @@ body {
             }
         }
 
+        .Loader {
+            height: 650px;
+            border-radius: 12px;
+
+            .cards {
+                background: #E7F4FB;
+                width: 100%;
+                height: 100%;
+                box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+                border-radius: 12px;
+            }
+
+            @media(max-width: 992px) {
+                height: 420px;
+            }
+        }
+
         .tab-content {
             .card {
                 height: 100%;
@@ -919,18 +992,8 @@ body {
                             font-size: 18px;
                             font-family: $medium;
                             line-height: 18px;
-                            margin-left: 22px;
                             position: relative;
 
-                            &::before {
-                                position: absolute;
-                                left: -22px;
-                                content: '';
-                                width: 16px;
-                                height: 16px;
-                                border-radius: 50%;
-                                background: #42CD83;
-                            }
 
                             @media (max-width:992px) {
                                 font-size: 12px;
@@ -1107,6 +1170,7 @@ body {
             padding: 14px 0 20px;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             margin-top: 65px;
+            background-color: #000;
 
             h6 {
                 text-align: center;
@@ -1114,9 +1178,14 @@ body {
                 // font-family: $roboto;
                 line-height: 14px;
                 color: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
                 a {
                     color: $colorBlue;
+                    margin: 0 7px;
                 }
 
                 @media (max-width:992px) {

@@ -78,7 +78,7 @@ const Footer = () => {
             </div>
 
             <div className="copyright">
-                <h6>Copyright 2022 <a href="zamaan.uz">Zamaan group.</a> All rights reserved.</h6>
+                <h6>Copyright 2022 <a href="zamaan.uz"><i><img src="/img/footerLogo.svg" alt="zamaan" /></i></a> All rights reserved.</h6>
             </div>
         </div>
     )
